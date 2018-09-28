@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>用户列表</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+</head>
+<body>
+<div class="with:80%">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>User Name</th>
+            <th>Password</th>
+            <th>Age</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr  th:each="pages : ${pages}">
+            <th scope="row" th:text="${pages.id}"></th>
+            <td th:text="${pages.username}"></td>
+            <td th:text="${pages.password}"></td>
+            <td th:text="${pages.age}"></td>
+            <td><a href="javacript:void(0);">edit</a></td>
+            <td><a href="javacript:void(0);">delete</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div>
+    <div>
+        <a href="/list" th:href="@{list(currPage=1)}" class="btn btn-info">首页</a>
+        <a th:if="${currPage>1}" href="/list" th:href="@{list(currPage=${currPage}-1)}" class="btn btn-info">上一页</a>
+        <a th:if="${currPage<6}" href="/list" th:href="@{list(currPage=${currPage}+1)}" class="btn btn-info">下一页</a>
+        <a href="/list" th:href="@{list(currPage=6)}" class="btn btn-info">尾页</a>
+    </div>
+</div>
+</body>
+</html>
