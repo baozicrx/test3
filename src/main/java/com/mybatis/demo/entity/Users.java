@@ -171,4 +171,15 @@ public class Users {
                 ", nickName='" + nickName + '\'' +
                 '}';
     }
+
+    public Users() {
+        super();
+    }
+
+    public Users(Long id, String username, String password) {
+        super();
+        this.id = id;
+        this.username = username;
+        this.password = password;
+    }
 }
