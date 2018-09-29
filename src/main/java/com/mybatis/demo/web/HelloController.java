@@ -28,9 +28,11 @@ public class HelloController {
         Integer pageSize=2;
         map.put("currIndex",(currPage-1)*pageSize);
         map.put("pageSize",pageSize);
+        Integer lastPage=(int)Math.ceil(userMapper.selectAll().size()/2.0);
         List<User> pages=userMapper.selectPage(map);
         model.addAttribute("pages",pages);
         model.addAttribute("currPage",currPage);
+        model.addAttribute("lastPage",lastPage);
         return "list";
     }
 

@@ -34,8 +34,8 @@
     <div>
         <a href="/list" th:href="@{list(currPage=1)}" class="btn btn-info">首页</a>
         <a th:if="${currPage>1}" href="/list" th:href="@{list(currPage=${currPage}-1)}" class="btn btn-info">上一页</a>
-        <a th:if="${currPage<6}" href="/list" th:href="@{list(currPage=${currPage}+1)}" class="btn btn-info">下一页</a>
-        <a href="/list" th:href="@{list(currPage=6)}" class="btn btn-info">尾页</a>
+        <a th:if="${currPage}<${lastPage}" href="/list" th:href="@{list(currPage=${currPage}+1)}" class="btn btn-info">下一页</a>
+        <a href="/list" th:href="@{list(currPage=${lastPage})}" class="btn btn-info">尾页</a>
     </div>
     <div>
         <a href="/toAdd" th:href="@{/toAdd}" class="btn btn-info">add</a>
