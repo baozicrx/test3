@@ -19,10 +19,10 @@ public class UserController {
         return users;
     }
 
-    @RequestMapping("/add")
-    public void save(User user){
-        userMapper.insert(user);
-    }
+//    @RequestMapping("/add")
+//    public void save(User user){
+//        userMapper.insert(user);
+//    }
 
     @RequestMapping("/getUser")
     public User getUser(Long id){

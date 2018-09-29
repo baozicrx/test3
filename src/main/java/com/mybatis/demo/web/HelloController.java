@@ -17,6 +17,11 @@ public class HelloController {
     @Autowired
     private UserMapper userMapper;
 
+    @RequestMapping("/")
+    public String index() {
+        return "redirect:/list";
+    }
+
     @RequestMapping("/list")
     public String page(Model model, @RequestParam(value = "currPage",required = false,defaultValue = "1") Integer currPage){
         Map<String,Object> map=new HashMap<>();
@@ -28,4 +33,35 @@ public class HelloController {
         model.addAttribute("currPage",currPage);
         return "list";
     }
+
+    @RequestMapping("/toAdd")
+    public String toAdd(){
+        return "userAdd";
+    }
+
+    @RequestMapping("/add")
+    public String add(User user){
+        userMapper.insert(user);
+        return "redirect:/list";
+    }
+
+    @RequestMapping("/toEdit")
+    public String toEdit(Model model,Long id){
+        User user=userMapper.selectByPrimaryKey(id);
+        model.addAttribute("user",user);
+        return "userEdit";
+    }
+
+    @RequestMapping("/edit")
+    public String edit(User user){
+        userMapper.updateByPrimaryKey(user);
+        return "redirect:/list";
+    }
+
+    @RequestMapping("/delete")
+    public String delete(Long id){
+        userMapper.deleteByPrimaryKey(id);
+        return "redirect:/list";
+    }
+
 }

@@ -24,8 +24,8 @@
             <td th:text="${pages.username}"></td>
             <td th:text="${pages.password}"></td>
             <td th:text="${pages.age}"></td>
-            <td><a href="javacript:void(0);">edit</a></td>
-            <td><a href="javacript:void(0);">delete</a></td>
+            <td><a th:href="@{/toEdit(id=${pages.id})}">edit</a></td>
+            <td><a th:href="@{/delete(id=${pages.id})}">delete</a></td>
         </tr>
         </tbody>
     </table>
@@ -36,6 +36,9 @@
         <a th:if="${currPage>1}" href="/list" th:href="@{list(currPage=${currPage}-1)}" class="btn btn-info">上一页</a>
         <a th:if="${currPage<6}" href="/list" th:href="@{list(currPage=${currPage}+1)}" class="btn btn-info">下一页</a>
         <a href="/list" th:href="@{list(currPage=6)}" class="btn btn-info">尾页</a>
+    </div>
+    <div>
+        <a href="/toAdd" th:href="@{/toAdd}" class="btn btn-info">add</a>
     </div>
 </div>
 </body>
